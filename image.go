@@ -46,7 +46,7 @@ func httpGet(url string) string {
 	}
 
 	// fmt.Println(string(body))
-	//	fmt.Println(res.Status)
+	// fmt.Println(res.Status)
 
 	return string(body)
 }
