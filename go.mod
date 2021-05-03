@@ -1,3 +1,3 @@
-module github.com/Goldenbean/bing-bg
+module github.com/goldenbean/bing-bg
 
 go 1.15
