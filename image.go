@@ -12,12 +12,14 @@ import (
 
 func fetchImageUrl(url string) []string {
 	str := httpGet(url)
+	//fmt.Println(str)
 
 	// 非贪婪模式
-	reg := regexp.MustCompile(`background-image:url\(\/th.*?\)`)
+	reg := regexp.MustCompile(`background-image: url\(\/th.*?\)`)
 	imageUrls := reg.FindAllString(str, -1)
 
 	ret := []string{}
+
 	for _, txt := range imageUrls {
 		fmt.Println(txt)
 		reg2 := regexp.MustCompile(`=.*?&`)
@@ -27,6 +29,7 @@ func fetchImageUrl(url string) []string {
 			continue
 		}
 	}
+
 	return ret
 }
 

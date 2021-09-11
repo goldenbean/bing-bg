@@ -22,6 +22,8 @@ func main() {
 
 	ret := fetchImageUrl(bingUrl)
 
+	fmt.Println(ret)
+	
 	for _, txt := range ret {
 		url := "https://cn.bing.com/th?id=" + txt
 		httpGetBinaryToFile(url, savePath+"/"+txt)
