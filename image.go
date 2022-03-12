@@ -7,29 +7,17 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"regexp"
 )
 
 func fetchImageUrl(url string) []string {
 	str := httpGet(url)
 	//fmt.Println(str)
 
-	// 非贪婪模式
-	reg := regexp.MustCompile(`background-image: url\(\/th.*?\)`)
-	imageUrls := reg.FindAllString(str, -1)
-
+	imageUrls := ParseImageUrl(str)
 	ret := []string{}
-
 	for _, txt := range imageUrls {
-		fmt.Println(txt)
-		reg2 := regexp.MustCompile(`=.*?&`)
-
-		for _, param := range reg2.FindStringSubmatch(txt) {
-			ret = append(ret, param[1:len(param)-1])
-			continue
-		}
+		ret = extractImageFilename(txt)
 	}
-
 	return ret
 }
 

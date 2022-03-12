@@ -10,7 +10,7 @@ var savePath = ""
 
 func init() {
 	home := os.Getenv("HOME")
-	flag.StringVar(&savePath, "o", home, "save path")
+	flag.StringVar(&savePath, "o", "./", "save path")
 	flag.Parse()
 
 	fmt.Println("user home: ", home)
@@ -23,9 +23,9 @@ func main() {
 	ret := fetchImageUrl(bingUrl)
 
 	fmt.Println(ret)
-	
+
 	for _, txt := range ret {
-		url := "https://cn.bing.com/th?id=" + txt
+		url := "https://s.cn.bing.net/th?id=" + txt
 		httpGetBinaryToFile(url, savePath+"/"+txt)
 	}
 
